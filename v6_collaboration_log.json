@@ -1,0 +1,86 @@
+{
+  "decisions": [
+    {
+      "agent": "product_manager",
+      "decision": "product_spec_created",
+      "rationale": "A classic digital board game for casual fun.",
+      "data": {
+        "features": 6,
+        "user_stories": 5,
+        "must_have": [
+          "Game Board Initialization",
+          "Dice Roll Mechanism",
+          "Player Piece Movement",
+          "Turn Management",
+          "Win Condition Detection",
+          "Multiple Player Support"
+        ]
+      }
+    },
+    {
+      "agent": "architect",
+      "decision": "architecture_created",
+      "rationale": "13 endpoints across 5 files",
+      "data": {
+        "endpoints": 13
+      }
+    },
+    {
+      "agent": "tech_lead",
+      "decision": "constraints_set",
+      "rationale": "The proposed architecture provides a solid foundation for the Snake and Ladders game, adhering to most contract requirements. Key areas for improvemen",
+      "data": {
+        "critical_issues": 3,
+        "auth_endpoints": 10,
+        "pagination_required": 3
+      }
+    },
+    {
+      "agent": "qa",
+      "decision": "qa_review_complete",
+      "rationale": "QA score: 75/100",
+      "data": {
+        "score": 75,
+        "blockers": [
+          "No pagination on GET /games",
+          "Missing 404 error handling for single-resource GET, PATCH, and POST (roll_dice) endpoints in game_routes.py"
+        ]
+      }
+    },
+    {
+      "agent": "security",
+      "decision": "security_review_complete",
+      "rationale": "Security score: 60/100",
+      "data": {
+        "score": 60
+      }
+    },
+    {
+      "agent": "code_review",
+      "decision": "code_review_complete",
+      "rationale": "Maintainability: 60/100",
+      "data": {
+        "maintainability_score": 60
+      }
+    },
+    {
+      "agent": "performance",
+      "decision": "performance_review_complete",
+      "rationale": "Performance score: 65/100",
+      "data": {
+        "score": 65
+      }
+    },
+    {
+      "agent": "orchestrator",
+      "decision": "pipeline_complete",
+      "rationale": "V6 score: 42/100",
+      "data": {
+        "total_time": 223.39,
+        "can_export": false
+      }
+    }
+  ],
+  "conflicts": [],
+  "shared_context_keys": []
+}
