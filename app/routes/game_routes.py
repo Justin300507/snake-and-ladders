@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, Path, Body, status
 from sqlalchemy.orm import Session, joinedload
@@ -31,8 +32,8 @@ class GameResponse(BaseModel):
     current_turn_player_id: Optional[int] = None
     status: str
     winner_id: Optional[int] = None
-    created_at: str
-    updated_at: str
+    created_at: datetime
+    updated_at: datetime
 
     model_config = ConfigDict(from_attributes=True)
 
