@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Loader2, User, Mail, Edit, Save, XCircle } from 'lucide-react';
 import API from '../api';
-import Header from '../components/Header';
 
 const parseError = (err) => {
   if (!err.response) return null;
@@ -73,47 +72,40 @@ const ProfilePage = () => {
 
   if (loading) {
     return (
-      <Header>
-        <div className="flex items-center justify-center h-64">
-          <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
-          <p className="ml-3 text-slate-700 dark:text-slate-300">Loading profile...</p>
-        </div>
-      </Header>
+      <div className="flex items-center justify-center h-64">
+        <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
+        <p className="ml-3 text-slate-700 dark:text-slate-300">Loading profile...</p>
+      </div>
     );
   }
 
   if (error) {
     return (
-      <Header>
-        <div className="flex flex-col items-center justify-center h-64 text-red-600 dark:text-red-400">
-          <XCircle className="w-10 h-10 mb-3" />
-          <p className="text-lg font-medium">Error loading profile:</p>
-          <p className="text-sm mt-1 text-center">{error}</p>
-          <button
-            onClick={fetchProfile}
-            className="mt-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Retry
-          </button>
-        </div>
-      </Header>
+      <div className="flex flex-col items-center justify-center h-64 text-red-600 dark:text-red-400">
+        <XCircle className="w-10 h-10 mb-3" />
+        <p className="text-lg font-medium">Error loading profile:</p>
+        <p className="text-sm mt-1 text-center">{error}</p>
+        <button
+          onClick={fetchProfile}
+          className="mt-4 px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Retry
+        </button>
+      </div>
     );
   }
 
   if (!user) {
     return (
-      <Header>
-        <div className="flex flex-col items-center justify-center h-64 text-slate-700 dark:text-slate-300">
-          <User className="w-10 h-10 mb-3" />
-          <p className="text-lg font-medium">No profile data available.</p>
-        </div>
-      </Header>
+      <div className="flex flex-col items-center justify-center h-64 text-slate-700 dark:text-slate-300">
+        <User className="w-10 h-10 mb-3" />
+        <p className="text-lg font-medium">No profile data available.</p>
+      </div>
     );
   }
 
   return (
-    <Header>
-      <div className="animate-[fadeIn_0.3s_ease-out]">
+    <div className="animate-[fadeIn_0.3s_ease-out]">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Your Profile</h1>
@@ -214,7 +206,6 @@ const ProfilePage = () => {
           </div>
         )}
       </div>
-    </Header>
   );
 };
 

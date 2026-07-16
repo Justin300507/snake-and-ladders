@@ -10,8 +10,8 @@ function GameLobbyPage() {
   const handleJoinLobby = async () => {
     if (!lobbyId) return;
     try {
-      // Assuming an endpoint like /games/join/{lobbyId}
-      await API.post(`/games/${lobbyId}/join`);
+      // Backend defines this as PATCH /games/{id}/join, not POST.
+      await API.patch(`/games/${lobbyId}/join`);
       navigate(`/game/${lobbyId}`);
     } catch (error) {
       console.error('Failed to join lobby:', error);
@@ -22,8 +22,12 @@ function GameLobbyPage() {
   const handleCreateGame = async () => {
     if (!newGameName) return;
     try {
-      const response = await API.post('/games', { name: newGameName });
-      const newGameId = response.data.id; // Assuming the API returns the new game ID
+      // Backend's GameCreate schema requires player_ids (List[int]), not a
+      // free-text name -- there is no game-name field on the model at all.
+      // The creating user is the first (and so far only) participant.
+      const userId = Number(localStorage.getItem('user_id'));
+      const response = await API.post('/games', { player_ids: [userId] });
+      const newGameId = response.data.id;
       navigate(`/game/${newGameId}`);
     } catch (error) {
       console.error('Failed to create game:', error);
