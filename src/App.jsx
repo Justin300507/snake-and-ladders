@@ -8,6 +8,7 @@ import GamePage from './pages/GamePage';
 import ProfilePage from './pages/ProfilePage';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import LandingPage from './pages/LandingPage';
 
 const PrivateRoute = ({ children }) =>
   localStorage.getItem('token') ? children : <Navigate to="/login" replace />;
@@ -79,7 +80,7 @@ const App = () => {
             </PrivateRoute>
           }
         />
-        <Route path="/" element={<Navigate to="/home" replace />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="*" element={<Navigate to="/home" replace />} />
       </Routes>
     </Router>
